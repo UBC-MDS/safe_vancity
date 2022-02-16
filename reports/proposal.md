@@ -14,17 +14,35 @@ vibrant quality of this city, an important factor when deciding to live
 in a specific city depends on the safety of its neighborhoods, along
 with other factors such as access to essential services, cost of living
 etc. Research evidence have shown that crime types have had significant
-changes during COVID at neighborhood levels in Vancouver (Anderson and
-Hodgkinson 2022). For example, assault cases, arson and robbery have
-increased in Vancouver’s Downtown core, Strathcona and Mount Pleasant
-areas. At VanRealtor, we wanted to offer our clients the decision to
-choose their next neighborhood to move, rent or visit while being aware
-of the crimes statistics of the city. This dashboard allows people to
-search for crime related information by neighborhoods in Vancouver using
-data from 2021. Users can filter data based on geological location,
-monthly crime rates, crime types and ..(will update as we finalize)
+changes during COVID at neighborhood levels in Vancouver \[@vancrime\].
+For example, assault cases, arson and robbery have increased in
+Vancouver’s Downtown core, Strathcona and Mount Pleasant areas. At
+VanRealtor, we wanted to offer our clients the decision to choose their
+next neighborhood to move, rent or visit while being aware of the crimes
+statistics of the city. This dashboard allows people to search for crime
+related information by neighborhoods in Vancouver using data from 2021.
+Users can filter data based on geological location, monthly crime rates,
+crime types and ..(will update as we finaliize)
 
 # Data Description
+
+The dataset used in this project was sourced from the Vancouver Police
+Department’s website, and particularly accessed from
+[here](https://geodash.vpd.ca/opendata/#). The dataset used for building
+dashboard is the 2021 crimes data in all Vancouver neighbourhoods as
+presented [here](https://geodash.vpd.ca/opendata/#).
+
+We will be visualizing a dataset of 32,013 observations. Each
+observation has 9 associated relevant variables that determine the type
+of crime in various neigbhourhoods in Vancouver. These variables are
+`YEAR`, `MONTH`, `DAY`, `HOUR`, `MINUTE`, `HUNDRED_BLOCK`,
+`NEIGHBOURHOOD`, `X` coordinate, and `Y` coordinate. Depending on what
+values the aforementioned variables take, `TYPE` of crime can be one of
+*Break and Enter Commercial*, *Break and Enter Residential/Other*,
+*Homicide*, *Mischief*, *Offence Against a Person*, *Other Theft*,
+*Theft from Vehicle*, *Theft of Bicycle*, *Theft of Vehicle*, *Vehicle
+Collision or Pedestrian Struck (with Fatality)*, *Vehicle Collision or
+Pedestrian Struck (with Injury)*.
 
 # Research Questions and Usage Scenarios
 
@@ -40,7 +58,7 @@ frequently in a particular neighborhood. In case that she only wants to
 accommodate for a short period, it would be helpful to know the specific
 crime distribution during that time frame.
 
-When Mary logs on to the “Safe Vancity App”, she can see the summary
+When Mary logs on to the “Safe Vancity App,” she can see the summary
 statistics (*e.g.* the total crime incidents, the top 3 common crime
 types, etc.) in Vancouver in 2021. She can then select the neighborhood
 that she wants to know more, and choose a specific range of time using
@@ -60,17 +78,3 @@ incidents, several homicides were recorded for this neighborhood in
 # Description of app and dashboard sketch
 
 # References
-
-<div id="refs" class="references csl-bib-body hanging-indent">
-
-<div id="ref-vancrime" class="csl-entry">
-
-Anderson, M., and T. Hodgkinson. 2022. “Andresen MA, Hodgkinson t. In a
-World Called Catastrophe: The Impact of COVID-19 on Neighbourhood Level
-Crime in Vancouver, Canada \[Published Online Ahead of Print, 2022 Jan
-9\]. J Exp Criminol. 2022;1-25. Doi:10.1007/S11292-021-09495-6.”
-*Journal of Experimental Criminology*, 1–25.
-
-</div>
-
-</div>
