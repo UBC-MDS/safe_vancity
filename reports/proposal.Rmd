@@ -33,6 +33,12 @@ crime types and ..(will update as we finaliize)
 
 # Data Description
 
+The dataset used in this project was sourced from Vancouver Police
+Department, and particularly accessed from
+[here](https://geodash.vpd.ca/opendata/#). The dataset used for building
+dashboard is the 2021 crimes data in all Vancojver neighbourhoods as
+presented [here](https://geodash.vpd.ca/opendata/#).
+
 We will be visualizing a dataset of 32,013 observations. Each
 observation has 9 associated relevant variables that determine the type
 of crime in various neigbhourhoods in Vancouver. These variables are
