@@ -28,28 +28,28 @@ monthly crime rates, crime types and ..(will update as we finalize)
 
 # Research Questions and Usage Scenarios
 
-Mary is a new to Vancouver, who is not very familiar with the
-neighborhoods. She wants to settle down by renting a place in Vancouver,
-and now she faces the problem of which neighborhoods to choose. One
-important factor she takes into account is the crime incidents. She
-wants to compare the safety of neighborhoods in the aspect of least
-crime incidents. Moreover, since certain types of crimes (*e.g.*
-homicide) are more serious and life-threatening than others, she is also
-willing to know the types of crimes that occur most frequently in a
-particular neighborhood. In case that she only wants to accommodate for
-a short period, it would be helpful to know the specific crime
-distribution during that time frame.
+Let’s take a look at Mary. She recently moved to Vancouver but is not
+very familiar with the neighborhoods. She wants to settle down by
+renting a place in Vancouver, and now she faces the problem of which
+neighborhoods to choose. One important factor she takes into account is
+the crime incidents. She wants to compare the safety of neighborhoods in
+the aspect of least crime incidents. Moreover, since certain types of
+crimes (*e.g.* homicide) are more serious and life-threatening than
+others, she is also willing to know the types of crimes that occur most
+frequently in a particular neighborhood. In case that she only wants to
+accommodate for a short period, it would be helpful to know the specific
+crime distribution during that time frame.
 
-When Mary log on to the “Van Safe app”, she can see the summary
+When Mary logs on to the “Safe Vancity App”, she can see the summary
 statistics (*e.g.* the total crime incidents, the top 3 common crime
 types, etc.) in Vancouver in 2021. She can then select the neighborhood
 that she wants to know more, and choose a specific range of time using
 the slider, she will be able to see the distribution of crime types
 within the time range she chooses. For instance, she sees that during
 2021-06 to 2021-08, which will be the actual duration of her residence
-in Vancouver, “offense again a person” takes place quite often in
-Strathcona. Therefore, she decides to remove Strathcona from her
-candidate list of neighborhoods.
+in Vancouver, “offense against a person” takes place quite often in
+Strathcona. With this information, she decides to remove Strathcona from
+her candidate list of neighborhoods.
 
 The app also allows her to check the crime incidents in each
 neighborhoods according to the crime type she chooses. When she does so,
