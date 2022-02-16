@@ -29,20 +29,21 @@ next neighborhood to move, rent or visit while being aware of the crimes
 statistics of the city. This dashboard allows people to search for crime
 related information by neighborhoods in Vancouver using data from 2021.
 Users can filter data based on geological location, monthly crime rates,
-crime types and ..(will update as we finalize)
+crime types and ..(will update as we finaliize)
 
 # Data Description
 
 We will be visualizing a dataset of 32,013 observations. Each
 observation has 9 associated relevant variables that determine the type
 of crime in various neigbhourhoods in Vancouver. These variables are
-YEAR, MONTH, DAY, HOUR, MINUTE, HUNDRED_BLOCK, NEIGHBOURHOOD, X, and Y.
-Depending on what values the aforementioned variables take, TYPE of
-crime can be one of Break and Enter Commercial Break and Enter
-Residential/Other Homicide Mischief Offence Against a Person Other Theft
-Theft from Vehicle Theft of Bicycle Theft of Vehicle Vehicle Collision
-or Pedestrian Struck (with Fatality) Vehicle Collision or Pedestrian
-Struck (with Injury)
+`YEAR`, `MONTH`, `DAY`, `HOUR`, `MINUTE`, `HUNDRED_BLOCK`,
+`NEIGHBOURHOOD`, `X` coordinate, and `Y` coordinate. Depending on what
+values the aforementioned variables take, `TYPE` of crime can be one of
+*Break and Enter Commercial*, *Break and Enter Residential/Other*,
+*Homicide*, *Mischief*, *Offence Against a Person*, *Other Theft*,
+*Theft from Vehicle*, *Theft of Bicycle*, *Theft of Vehicle*, *Vehicle
+Collision or Pedestrian Struck (with Fatality)*, *Vehicle Collision or
+Pedestrian Struck (with Injury)*.
 
 # Research Questions and Usage Scenarios
 
