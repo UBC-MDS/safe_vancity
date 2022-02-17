@@ -4,7 +4,7 @@
 **Our role**: Data Science team at VanRealtor
 
 **Target audience**: Real estate customers looking to buy properties in
-Vancouver neighborhoods and Real estate agents at Realtor looking for
+Vancouver neighborhoods and Real estate agents at VanRealtor looking for
 listings in safer neighborhoods to attract more clients.
 
 Being the largest city in British Columbia, Vancouver is an attractive
@@ -21,18 +21,19 @@ areas. At VanRealtor, we wanted to offer our clients the decision to
 choose their next neighborhood to move, rent or visit while being aware
 of the crimes statistics of the city. This dashboard allows people to
 search for crime related information by neighborhoods in Vancouver using
-data from 2021. Users can filter data based on geological location,
-monthly crime rates, crime types and ..(will update as we finalize)
+data from 2021. Users can also filter data based on geological location,
+most common crime types by neighbourhood, time of the crime event and
+crime density by location.
 
 # Data Description
 
 The dataset used in this project was sourced from the Vancouver Police
-Department’s website, and particularly accessed from
-[here](https://geodash.vpd.ca/opendata/#). The dataset used for building
-dashboard is the 2021 crimes data in all Vancouver neighborhoods as
-presented [here](https://geodash.vpd.ca/opendata/#).
+Department’s website. It is publicly available and accessed from
+[here](https://geodash.vpd.ca/opendata/#). We used the 2021 crimes
+dataset for all Vancouver neighbourhood to build this dashboard.
+Extracted data can be found in the data folder.
 
-We will be visualizing a dataset of 32,013 observations. Each
+The 2021 crimes dataset consists of 32,013 observations. Each
 observation has 9 associated relevant variables that determine the type
 of crime in various neigbhourhoods in Vancouver. These variables are
 `YEAR`, `MONTH`, `DAY`, `HOUR`, `MINUTE`, `HUNDRED_BLOCK`,
@@ -58,7 +59,7 @@ frequently in a particular neighborhood. In case that she only wants to
 accommodate for a short period, it would be helpful to know the specific
 crime distribution during that time frame.
 
-When Mary logs on to the “Safe Vancity App”, she can see the summary
+When Mary logs on to the “Safe Vancity App,” she can see the summary
 statistics (*e.g.* the total crime incidents, the top 3 common crime
 types, etc.) in Vancouver in 2021. She can then select the neighborhood
 that she wants to know more, and choose a specific range of time using
