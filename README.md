@@ -5,6 +5,10 @@ A Vancouver crime rate dashboard. We are your friendly, neighbourhood data scien
 The Safe Vancity dashboard is an interactive platform that provides an overview of the crime rates across various Vancouver neighburhoods, based on 2021 crime statistics data. This dashboard aims to help people make decisions when considering their next trip or move to Vancouver, BC, via visually exploring a dataset of crime statistics. The dashboard also provides summaries of important metrics related to crime statistics and allows useres to filter information by geological location, crime type, crime rate, and time of the crime. 
 
 For details on motivation for creating the dashboard, dataset information and other descriptions, check our the full proposal [here](https://github.com/UBC-MDS/safe_vancity/blob/main/reports/proposal.md).
+
+## Dashboard description and sketch
+
+TBC
 ## Support
 
 If you run into troubles, please check the [issues](https://github.com/UBC-MDS/safe_vancity/issues) to see if your problem has already been reported or to open new issues.
