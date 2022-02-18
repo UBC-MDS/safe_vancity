@@ -74,9 +74,9 @@ The app also allows her to check the crime incidents in each
 neighborhoods according to the crime type she chooses. When she does so,
 she finds that although Kitsilano has an overall low number of crime
 incidents, several homicides were recorded for this neighborhood in
-2021. Thus, she might decide to look into other neighborhoods.
-
-# Description of app and dashboard sketch
+2021. Thus, she might decide to look into other neighborhoods. She will
+also be able to see the crime density in each neighbourhood using the
+map functionality.
 
 # References
 

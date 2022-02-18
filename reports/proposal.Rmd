@@ -25,19 +25,6 @@ Let's take a look at Mary. She recently moved to Vancouver but is not very famil
 
 When Mary logs on to the "Safe Vancity App", she can see the summary statistics (*e.g.* the total crime incidents, the top 3 common crime types, etc.) in Vancouver in 2021. She can then select the neighborhood that she wants to know more, and choose a specific range of time using the slider, she will be able to see the distribution of crime types within the time range she chooses. For instance, she sees that during 2021-06 to 2021-08, which will be the actual duration of her residence in Vancouver, "offense against a person" takes place quite often in Strathcona. With this information, she decides to remove Strathcona from her candidate list of neighborhoods.
 
-The app also allows her to check the crime incidents in each neighborhoods according to the crime type she chooses. When she does so, she finds that although Kitsilano has an overall low number of crime incidents, several homicides were recorded for this neighborhood in 2021. Thus, she might decide to look into other neighborhoods.
-
-
-
-# Description of app and dashboard sketch
-
-
-
-
-
-
-
-
-
+The app also allows her to check the crime incidents in each neighborhoods according to the crime type she chooses. When she does so, she finds that although Kitsilano has an overall low number of crime incidents, several homicides were recorded for this neighborhood in 2021. Thus, she might decide to look into other neighborhoods. She will also be able to see the crime density in each neighbourhood using the map functionality.
 
 # References
