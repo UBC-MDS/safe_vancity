@@ -6,9 +6,12 @@ The Safe Vancity dashboard is an interactive platform that provides an overview 
 
 For details on motivation for creating the dashboard, dataset information and other descriptions, check our the full proposal [here](https://github.com/UBC-MDS/safe_vancity/blob/main/reports/proposal.md).
 
-## Dashboard description and sketch
+## Dashboard description and design
 
-TBC
+The Safe Vancity app is a dashboard that visualizes the crime rates in Vancouver in 2021. The landing page contains two panels. For the map on the left panel, from the dropdown lists, users can specify the date range (e.g. from 2021.01 to 2021.03), weekdays (M-F), time range (from 8 am to 12 pm) and the crime types (e.g. homicide) that they are interested in, and the map will display the locations where individual crime cases happened. The right-hand-side panel is divided into two sections. In the top section, users get to choose the crime category (i.e. “Violent crimes” or “Property crimes”) and neighborhoods (all or specific ones) from drop-down menu to obtain the distribution of crimes types. Meanwhile, the “Top 3 Crimes” section allows users to see the actual number of crime cases for the top 3 crime types in the selected neighborhood.
+
+![Dashboard design]()
+
 ## Support
 
 If you run into troubles, please check the [issues](https://github.com/UBC-MDS/safe_vancity/issues) to see if your problem has already been reported or to open new issues.
