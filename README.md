@@ -15,7 +15,7 @@ If you run into troubles, please check the [issues](https://github.com/UBC-MDS/s
 
 ## Contributions
 
-We recognize and welcome all contributors. Names and GitHub @usernames listed below:
+We recognize and welcome all contributors. Names and GitHub @usernames of developers listed below:
 
 - Arlin Cherian @arlincherian
 - Victor Francis @Vikiano
