@@ -12,7 +12,6 @@ The Safe Vancity app is a dashboard that visualizes the crime rates in Vancouver
 
 ![Dashboard design]()
 
-TBC
 ## Support
 
 If you run into troubles, please check the [issues](https://github.com/UBC-MDS/safe_vancity/issues) to see if your problem has already been reported or to open new issues.
