@@ -68,27 +68,42 @@ app = Dash(__name__,  external_stylesheets=['https://codepen.io/chriddyp/pen/bWL
 server = app.server
 
 app.layout = html.Div([
-    html.H1('VANCOUVER CRIME RATE DASHBOARD'),
-    html.Iframe(
-        id='histogram',
-        style={'border-width': '0', 'width': '100%', 'height': '400px'}),
-    dcc.Dropdown(
-        id='crime_category-widget',
-        value='Violent crimes',  # REQUIRED to show the plot on the first page load
-        options=[{'label': col, 'value': col} for col in ["Violent crimes", "Property crimes", "Vehicle collision"]])])
+    html.Div([
+        html.H1('VANCOUVER CRIME RATE DASHBOARD')
+        ], style={'textAlign': 'center'}),
+    html.Div([
+        html.Iframe(
+            id='histogram',
+            style={'border-width': '0', 'width': '100%', 'height': '300px'}),
+        html.H5('Select the crime category'),
+        dcc.Dropdown(
+            id='crime_category-widget',
+            value='All',  # REQUIRED to show the plot on the first page load
+            options=[{'label': col, 'value': col} for col in ["All", "Violent crimes", "Property crimes", "Vehicle collision"]])
+        ], style={'width': '45%', 'float': 'right', 'display': 'inline-block'}
+        )])
 
 # Set up callbacks/backend
 @app.callback(
     Output('histogram', 'srcDoc'),
     Input('crime_category-widget', 'value'))
 def plot_altair(crime_category):
-    chart = alt.Chart(crime.loc[crime["crime_category"] == crime_category],
-                      title=f"{crime_category}: crime cases by crime types",
-                      ).mark_bar().encode(
-                          y=alt.Y("TYPE", sort="-x", title='Type of crime'),
-                          x=alt.X("count()", title='Number of crime cases'),
-                          tooltip='count()'
-                      ).interactive().properties(height=300)
+    if crime_category == "All":
+        chart = alt.Chart(crime,
+                        title=f"Crime cases by crime types",
+                        ).mark_bar().encode(
+                            y=alt.Y("TYPE", sort="-x", title='Type of crime'),
+                            x=alt.X("count()", title='Number of crime cases'),
+                            tooltip='count()'
+                        ).interactive().properties(height=200)
+    else:
+        chart = alt.Chart(crime.loc[crime["crime_category"] == crime_category],
+                        title=f"{crime_category}: crime cases by crime types",
+                        ).mark_bar().encode(
+                            y=alt.Y("TYPE", sort="-x", title='Type of crime'),
+                            x=alt.X("count()", title='Number of crime cases'),
+                            tooltip='count()'
+                        ).interactive().properties(height=200)
     return chart.to_html()
 
 if __name__ == '__main__':
