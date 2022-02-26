@@ -4,64 +4,8 @@ import pandas as pd
 
 alt.data_transformers.enable("data_server")
 
-# Read in global data
-crime = pd.read_csv("data/crimedata_csv_AllNeighbourhoods_2021.csv")
-crime.loc[
-    crime["TYPE"] == "Offence Against a Person",
-    "crime_category",
-] = "Violent crimes"
-crime.loc[
-    crime["TYPE"] == "Mischief",
-    "crime_category",
-] = "Violent crimes"
-crime.loc[
-    crime["TYPE"] == "Homicide",
-    "crime_category",
-] = "Violent crimes"
-
-crime.loc[
-    crime["TYPE"] == "Theft from Vehicle",
-    "crime_category",
-] = "Property crimes"
-crime.loc[
-    crime["TYPE"] == "Break and Enter Commercial",
-    "crime_category",
-] = "Property crimes"
-crime.loc[
-    crime["TYPE"] == "Break and Enter Residential/Other",
-    "crime_category",
-] = "Property crimes"
-crime.loc[
-    crime["TYPE"] == "Theft of Bicycle",
-    "crime_category",
-] = "Property crimes"
-crime.loc[
-    crime["TYPE"] == "Theft of Vehicle",
-    "crime_category",
-] = "Property crimes"
-crime.loc[
-    crime["TYPE"] == "Other Theft",
-    "crime_category",
-] = "Property crimes"
-
-crime.loc[
-    crime["TYPE"] == "Vehicle Collision or Pedestrian Struck (with Injury)",
-    "crime_category",
-] = "Vehicle collision"
-crime.loc[
-    crime["TYPE"] == "Vehicle Collision or Pedestrian Struck (with Fatality)",
-    "crime_category",
-] = "Vehicle collision"
-
-## These 2 types are too long and won't fit on the chart axis, so we make them shorter
-crime.loc[
-    crime["TYPE"] == "Vehicle Collision or Pedestrian Struck (with Fatality)",
-    "TYPE",
-] = "With Fatality"
-crime.loc[
-    crime["TYPE"] == "Vehicle Collision or Pedestrian Struck (with Injury)",
-    "TYPE",
-] = "With Injury"
+# Read in the cleaned data
+crime = pd.read_csv("data/crime_clean.csv")
 
 ## NEIGHBOURHOOD list
 neighbourhood_l = (
