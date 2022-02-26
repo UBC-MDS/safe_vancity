@@ -11,9 +11,9 @@ from pyproj import Transformer
 #--------------------------------------------------------------------------------------------------------#
 # read in crime data from VPD open data for 2021, additional datasets downloaded from VPD GEOdash for 
 # missing X and Y coordinates specific to "Homicide" and "Offence against a Person" crime type rows within the `crime` dataset.
-crime = pd.read_csv("crimedata_csv_AllNeighbourhoods_2021.csv")
-homicide = pd.read_csv("homicide.csv")
-oaap = pd.read_csv("offenceaap.csv")
+crime = pd.read_csv("data/crimedata_csv_AllNeighbourhoods_2021.csv")
+homicide = pd.read_csv("data/homicide.csv")
+oaap = pd.read_csv("data/offenceaap.csv")
 
 #--------------------------------------------------------------------------------------------------------#
 # deleting homicide and offence against a person rows since they are missing X and Y coordinates
