@@ -11,7 +11,7 @@ alt.data_transformers.enable("data_server")
 
 # ---------------------------------------------------------------------------------------------------#
 
-crime = pd.read_csv("../data/processed/crime_clean.csv")
+crime = pd.read_csv("data/processed/crime_clean.csv")
 
 
 # ---------------------------------------------------------------------------------------------------#
@@ -168,7 +168,7 @@ def plot_altair(crime_category, neighbourhood):
 
 app = Dash(__name__, meta_tags=[{"name": "viewport", "content": "width=device-width"}])
 
-
+server = app.server
 # ---------------------------------------------------------------------------------------------------#
 app.layout = html.Div(
     [

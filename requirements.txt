@@ -1,0 +1,9 @@
+pickle
+plotly==5.6.0
+dash==2.1.0
+pyproj==3.3.0
+pandas
+altair
+os
+gunicorn
+dash_bootstrap_components
