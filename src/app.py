@@ -1,4 +1,3 @@
-from pickle import FALSE
 import plotly.express as px
 from dash import Dash, dcc, html, Input, Output
 from pyproj import Transformer
