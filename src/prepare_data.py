@@ -11,9 +11,9 @@ from pyproj import Transformer
 #--------------------------------------------------------------------------------------------------------#
 # read in crime data from VPD open data for 2021, additional datasets downloaded from VPD GEOdash for 
 # missing X and Y coordinates specific to "Homicide" and "Offence against a Person" crime type rows within the `crime` dataset.
-crime = pd.read_csv("data/crimedata_csv_AllNeighbourhoods_2021.csv")
-homicide = pd.read_csv("data/homicide.csv")
-oaap = pd.read_csv("data/offenceaap.csv")
+crime = pd.read_csv("data/raw/crimedata_csv_AllNeighbourhoods_2021.csv")
+homicide = pd.read_csv("data/raw/homicide.csv")
+oaap = pd.read_csv("data/raw/offenceaap.csv")
 
 #--------------------------------------------------------------------------------------------------------#
 # deleting homicide and offence against a person rows since they are missing X and Y coordinates
@@ -139,10 +139,14 @@ crime.loc[
     "TYPE",
 ] = "Vehicle collision, Fatal"
 
-
+#--------------------------------------------------------------------------------------------------------#
+# Further data wrangling
+crime['month_name'] = crime['MONTH'].apply(lambda x: calendar.month_abbr[x])
+crime['date'] = pd.to_datetime(crime[['YEAR', 'MONTH', 'DAY']])
+crime = crime.assign(day_of_week = crime['date'].dt.day_name())
 #--------------------------------------------------------------------------------------------------------#
 # save cleaned dataset to data folder 
-crime.to_csv('data/crime_clean.csv', index=False) 
+crime.to_csv('data/processed/crime_clean.csv', index=False) 
 
 
 
