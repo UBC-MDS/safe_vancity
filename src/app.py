@@ -5,7 +5,7 @@ import pandas as pd
 import altair as alt
 import os
 
-# alt.data_transformers.enable("data_server")
+alt.data_transformers.enable("data_server")
 
 
 # ---------------------------------------------------------------------------------------------------#
@@ -130,7 +130,7 @@ def plot_altair(crime_category, neighbourhood):
             .configure_title(color="#FFFFFF")
             # .configure_header(titleColor="#FFFFFF", titleFontSize=14)
             .configure_view(strokeWidth=0)
-            .properties(width=700, height=500)
+            .properties(width=650, height=500)
         )
     else:
         chart = (
@@ -157,7 +157,7 @@ def plot_altair(crime_category, neighbourhood):
             .configure_title(color="#FFFFFF")
             # .configure_header(titleColor="#FFFFFF", titleFontSize=14)
             .configure_view(strokeWidth=0)
-            .properties(width=700, height=500)
+            .properties(width=650, height=500)
         )
     return chart.to_html()
 
@@ -171,7 +171,9 @@ def plot_histogram(weekday):
         .mark_bar()
         .encode(
             y=alt.Y("crime_category", sort="-x", title="Crime Category"),
-            x=alt.X("count()", title="Number of crime cases"),
+            x=alt.X(
+                "count()", title="Number of crime cases", axis=alt.Axis(grid=False)
+            ),
             tooltip="count()",
         )
         .interactive()
@@ -181,7 +183,7 @@ def plot_histogram(weekday):
         .configure_title(color="#FFFFFF")
         # .configure_header(titleColor="#FFFFFF", titleFontSize=14)
         .configure_view(strokeWidth=0)
-        .properties(width=700, height=500)
+        .properties(width=150, height=200)
     )
 
     return chart.to_html()
