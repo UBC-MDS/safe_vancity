@@ -162,6 +162,215 @@ def plot_altair(crime_category, neighbourhood):
     return chart.to_html()
 
 
+def plot_histogram(weekday):
+    chart = (
+            alt.Chart(
+                crime.loc[crime["day_of_week"] == weekday],
+                title=f"Total Reported Cases vs. Crime Category on {weekday}s",
+            )
+            .mark_bar()
+            .encode(
+                y=alt.Y("crime_category", sort="-x", title="Crime Category"),
+                x=alt.X("count()", title="Number of crime cases"),
+                tooltip="count()",
+            ).interactive()
+            .properties(width=220, height=230)
+            # .configure_axis(
+            #     titleFontSize=12,
+            #     grid=True,
+            #     titleColor='#FFFFFF'
+            # )
+            # .configure(background='#010915')
+            # .configure_header(titleColor='#FFFFFF', titleFontSize=14)
+            # .configure_view(
+            #     strokeWidth=0
+            # )
+
+        )
+    return chart.to_html()
+
+#---------------------------------------------------------------------------------------------------#
+
+
+app = Dash(__name__, meta_tags=[
+           {"name": "viewport", "content": "width=device-width"}])
+
+
+#---------------------------------------------------------------------------------------------------#
+app.layout = html.Div([
+    html.Div([
+        html.Div([
+            html.Img(src=app.get_asset_url('logo-1.jpg'),
+                     id='logo_image',
+                     style={'height': '60px',
+                            'width': 'auto',
+                                     'margin-bottom': '25px',
+                                     'padding-left': 0})
+
+
+        ], className='one column'),
+
+        html.Div([
+            html.Div([
+                html.H1('Vancouver Crime Incidence Dashboard', style={
+                        'margin-bottom': '0px', 'color': 'white', 'textalign': 'right'}),
+                html.H3('Incidence for 2021', style={
+                        'margin-top': '0px', 'color': 'white', 'textalign': 'right'})
+            ])
+
+        ], className='six column', id="title"),
+
+        html.Div([
+            html.H6('Last Updated: ' + str(pd.to_datetime('now',utc=True).tz_convert('US/Pacific').strftime("%m/%d/%Y")),
+                    style={'color': 'orange'})
+
+        ], className='one-third column', id='title1')
+
+    ], id='header', className='row flex-display', style={'margin-bottom': '25px'}),
+
+    html.Div([
+        html.Div([
+            html.Iframe(
+                id="map-chart",
+                style={"border-width": "0",
+                       "width": "100%", "height": "300px"},
+                srcDoc=plot(crime_type='Break and Enter Commercial', neighbourhood='West End', month_name='All'))
+
+        ], className='create_container ten columns'),
+
+        html.Div([
+
+            # need to add a chart/table by Victor
+            html.Iframe(
+                id="hist",
+                style={"border-width": "0", "width": "100%", "height": "300px"},
+            )
+            
+
+        ], className='create_container six columns')
+
+    ], className='row flex-display'),
+
+    html.Div([
+        html.Div([
+
+            html.Label([
+                "FILTERS"
+            ], className='fix_label',
+                style={'color': 'orange', "textAlign": "center"},),
+
+            html.Label(
+                [
+                    "Select the crime type",
+                    dcc.Dropdown(
+                        id="crime_type",
+                        value="Break and Enter Commercial",
+                        options=[{'label': i, 'value': i}
+                                 for i in comp],
+                        searchable=True,
+                        # placeholder='Select a crime type..',
+                        clearable=False,
+                        className='dcc_compon'
+                    ),
+                ],
+                className='fix_label',
+                style={'color': 'white'},
+            ),
+            html.Label(
+                [
+                    "Select the neighborhood",
+                    dcc.Dropdown(
+                        id="neighbourhood",
+                        value="West End",
+                        options=[
+                            {"label": col, "value": col}
+                            for col in neighbourhood_l
+                        ],
+                        searchable=True,
+                        # placeholder='Please select...',
+                        clearable=False,
+                        className='dcc_compon'
+                    ),
+                ],
+                className='fix_label',
+                style={'color': 'white'},
+            ),
+
+
+            html.Label(
+                [
+                    "Select the weekday",
+                    dcc.Dropdown(
+                        id="weekday",
+                        value="Saturday",
+                        options=[
+                            {"label": col, "value": col}
+                            for col in week_l
+                        ],
+                        searchable=True,
+                        # placeholder='Please select...',
+                        clearable=False,
+                        className='dcc_compon'
+                    ),
+                ],
+                className='fix_label',
+                style={'color': 'white'},
+            ),
+
+
+            html.Label(
+                [
+                    "Select the month",
+                    dcc.Dropdown(
+                        id="month_name",
+                        value="All",  # REQUIRED to show the plot on the first page load
+                        options=[
+                            {"label": col, "value": col}
+                            for col in [
+                                "All",
+                                'Nov',
+                                'Dec',
+                                'Jul',
+                                'Jun',
+                                'Sep',
+                                'Aug',
+                                'Mar',
+                                'Feb',
+                                'Oct',
+                                'May',
+                                'Apr',
+                                'Jan'
+                            ]
+                        ],
+                        searchable=True,
+                        # placeholder='Please select...',
+                        clearable=False,
+                        className='dcc_compon'
+                    ),
+                ],
+                className='fix_label',
+                style={'color': 'white'},
+            ),
+            
+            html.Label([
+                "---------------------"
+            ], className='fix_label',
+                style={'color': 'white', "textAlign": "center"},),
+            html.Label(
+                [
+                    "Select crime category for total cases",
+                    dcc.Dropdown(
+                        id="crime_category-widget",
+                        value="All",  # REQUIRED to show the plot on the first page load
+                        options=[
+                            {"label": col, "value": col}
+                            for col in [
+                                "All",
+                                "Violent crimes",
+                                "Property crimes",
+                                "Vehicle collision",
+
+
 # ---------------------------------------------------------------------------------------------------#
 
 
@@ -208,6 +417,7 @@ app.layout = html.Div(
                                         "textalign": "right",
                                     },
                                 ),
+
                             ]
                         )
                     ],
@@ -437,6 +647,14 @@ def update_output(crime_type, neighbourhood, month_name):
 def update_altair(crime_category, neighbourhood):
     return plot_altair(crime_category, neighbourhood)
 
+@app.callback(
+    Output("hist", "srcDoc"),
+    Input("weekday", "value"),
+)
+def update_altair(weekday):
+    return plot_histogram(weekday)
 
-if __name__ == "__main__":
+
+if __name__ == '__main__':
     app.run_server(debug=True)
+
