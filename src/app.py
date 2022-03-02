@@ -5,7 +5,7 @@ import pandas as pd
 import altair as alt
 import os
 
-alt.data_transformers.enable("data_server")
+# alt.data_transformers.enable("data_server")
 
 
 # ---------------------------------------------------------------------------------------------------#
