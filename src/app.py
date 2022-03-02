@@ -139,6 +139,35 @@ def plot_altair(crime_category, neighbourhood):
         )
     return chart.to_html()
 
+
+
+def plot_histogram(weekday):
+    chart = (
+            alt.Chart(
+                crime.loc[crime["day_of_week"] == weekday],
+                title=f"Total Reported Cases vs. Crime Category on {weekday}s",
+            )
+            .mark_bar()
+            .encode(
+                y=alt.Y("crime_category", sort="-x", title="Crime Category"),
+                x=alt.X("count()", title="Number of crime cases"),
+                tooltip="count()",
+            ).interactive()
+            .properties(width=220, height=230)
+            # .configure_axis(
+            #     titleFontSize=12,
+            #     grid=True,
+            #     titleColor='#FFFFFF'
+            # )
+            # .configure(background='#010915')
+            # .configure_header(titleColor='#FFFFFF', titleFontSize=14)
+            # .configure_view(
+            #     strokeWidth=0
+            # )
+
+        )
+    return chart.to_html()
+
 #---------------------------------------------------------------------------------------------------#
 
 
@@ -191,8 +220,13 @@ app.layout = html.Div([
         html.Div([
 
             # need to add a chart/table by Victor
+            html.Iframe(
+                id="hist",
+                style={"border-width": "0", "width": "100%", "height": "300px"},
+            )
+            
 
-        ], className='create_container four columns')
+        ], className='create_container six columns')
 
     ], className='row flex-display'),
 
@@ -240,6 +274,29 @@ app.layout = html.Div([
                 className='fix_label',
                 style={'color': 'white'},
             ),
+
+
+            html.Label(
+                [
+                    "Select the weekday",
+                    dcc.Dropdown(
+                        id="weekday",
+                        value="Saturday",
+                        options=[
+                            {"label": col, "value": col}
+                            for col in week_l
+                        ],
+                        searchable=True,
+                        # placeholder='Please select...',
+                        clearable=False,
+                        className='dcc_compon'
+                    ),
+                ],
+                className='fix_label',
+                style={'color': 'white'},
+            ),
+
+
             html.Label(
                 [
                     "Select the month",
@@ -349,6 +406,13 @@ def update_output(crime_type, neighbourhood, month_name):
 )
 def update_altair(crime_category, neighbourhood):
     return plot_altair(crime_category, neighbourhood)
+
+@app.callback(
+    Output("hist", "srcDoc"),
+    Input("weekday", "value"),
+)
+def update_altair(weekday):
+    return plot_histogram(weekday)
 
 
 if __name__ == '__main__':
