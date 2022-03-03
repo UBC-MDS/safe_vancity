@@ -199,6 +199,26 @@ app = Dash(__name__, meta_tags=[{"name": "viewport", "content": "width=device-wi
 
 server = app.server
 # ---------------------------------------------------------------------------------------------------#
+
+tab_style = {
+    "borderBottom": "1px solid #d6d6d6",
+    "color": "white",
+    "padding": "6px",
+    "backgroundColor": "#010915",
+    # 'fontWeight': 'bold'
+}
+tab_selected_style = {
+    "borderTop": "4px solid #d6d6d6",
+    "borderBottom": "4px solid #d6d6d6",
+    "borderLeft": "4px solid #d6d6d6",
+    "borderRight": "4px solid #d6d6d6",
+    "backgroundColor": "#010915",
+    "color": "white",
+    "padding": "6px",
+    "fontWeight": "bold",
+    "fontSize": 20,
+}
+
 app.layout = html.Div(
     [
         html.Div(
@@ -400,34 +420,34 @@ app.layout = html.Div(
                             className="fix_label",
                             style={"color": "white"},
                         ),
-                        html.Label(
-                            ["---------------------"],
-                            className="fix_label",
-                            style={"color": "white", "textAlign": "center"},
-                        ),
-                        html.Label(
-                            [
-                                "Select crime category for total cases",
-                                dcc.Dropdown(
-                                    id="crime_category-widget",
-                                    value="All",  # REQUIRED to show the plot on the first page load
-                                    options=[
-                                        {"label": col, "value": col}
-                                        for col in [
-                                            "All",
-                                            "Violent crimes",
-                                            "Property crimes",
-                                            "Vehicle collision",
-                                        ]
-                                    ],
-                                    searchable=True,
-                                    # placeholder='Please select...',
-                                    clearable=False,
-                                ),
-                            ],
-                            className="fix_label",
-                            style={"color": "white"},
-                        ),
+                        # html.Label(
+                        #     ["---------------------"],
+                        #     className="fix_label",
+                        #     style={"color": "white", "textAlign": "center"},
+                        # ),
+                        # html.Label(
+                        #     [
+                        #         "Select crime category for total cases",
+                        #         dcc.Dropdown(
+                        #             id="crime_category-widget",
+                        #             value="All",  # REQUIRED to show the plot on the first page load
+                        #             options=[
+                        #                 {"label": col, "value": col}
+                        #                 for col in [
+                        #                     "All",
+                        #                     "Violent crimes",
+                        #                     "Property crimes",
+                        #                     "Vehicle collision",
+                        #                 ]
+                        #             ],
+                        #             searchable=True,
+                        #             # placeholder='Please select...',
+                        #             clearable=False,
+                        #         ),
+                        #     ],
+                        #     className="fix_label",
+                        #     style={"color": "white"},
+                        # ),
                         html.Label(
                             ["Data Source: "],
                             className="fix_label",
@@ -456,6 +476,36 @@ app.layout = html.Div(
                 ),
                 html.Div(
                     [
+                        dcc.Tabs(
+                            id="crime_category-widget",
+                            value="All",
+                            children=[
+                                dcc.Tab(
+                                    label="All",
+                                    value="All",
+                                    style=tab_style,
+                                    selected_style=tab_selected_style,
+                                ),
+                                dcc.Tab(
+                                    label="Violent crimes",
+                                    value="Violent crimes",
+                                    style=tab_style,
+                                    selected_style=tab_selected_style,
+                                ),
+                                dcc.Tab(
+                                    label="Property crimes",
+                                    value="Property crimes",
+                                    style=tab_style,
+                                    selected_style=tab_selected_style,
+                                ),
+                                dcc.Tab(
+                                    label="Vehicle collision",
+                                    value="Vehicle collision",
+                                    style=tab_style,
+                                    selected_style=tab_selected_style,
+                                ),
+                            ],
+                        ),
                         html.Iframe(
                             id="histogram",
                             style={
@@ -463,7 +513,7 @@ app.layout = html.Div(
                                 "width": "100%",
                                 "height": "600px",
                             },
-                        )
+                        ),
                     ],
                     className="create_container nine columns",
                 ),
@@ -507,4 +557,4 @@ def update_histogram(weekday):
 
 
 if __name__ == "__main__":
-    app.run_server(debug=True)
+    app.run_server(debug=True, port=2022)
