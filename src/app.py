@@ -9,7 +9,7 @@ alt.data_transformers.disable_max_rows()
 
 # ---------------------------------------------------------------------------------------------------#
 
-crime = pd.read_csv("../data/processed/crime_clean.csv")
+crime = pd.read_csv("data/processed/crime_clean.csv")
 
 
 # ---------------------------------------------------------------------------------------------------#
