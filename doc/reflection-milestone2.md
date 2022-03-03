@@ -1,4 +1,4 @@
-## Milestone 2 Reflection: Foundation Shades Across the Globe
+## Milestone 2 Reflection: Safe Vancity Dashboard App
 
 ### 1. What we have implemented
 
