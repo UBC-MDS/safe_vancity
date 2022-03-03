@@ -2,19 +2,19 @@
 
 ### 1. What we have implemented
 
-We have made implementations that we proposed in our Milestone 1 proposal. These implementations include:
+We have made most of the implementations that we proposed in our Milestone 1 proposal with some exceptions and additions to the previous proposal. Our current implementations include:
 
-1. Map of `Crime Density by Neighbourhood, Crime Type, and  Month`;
+1. An interactive map of `Crime Density by Neighbourhood, Crime Type, and  Month`;
 
-2. Bar Chart of `Crime Type and corresponding Total Reported Cases by Neighbourhood`;
+2. An interactive bar chart of `Total Reported Cases by Neighbourhood and Crime Type`;
 
-3. Bar Chart of `Crime Category and corresponding Total Reported Cases by Weekday`;
+3. An interactive bar chart of `Total Reported Cases per Crime Category by Weekday and Neighbourhood`;
 
 ### 2. What we decided not to implement
 
 We decided not to include the `date range` and `time range` filters in our dashboard because:
 
-* it allows for too much granularity that may not necessarily be important for a potential end user of our dashboard, instead we implemented other less granular filters that we thought might be more relevant to a regular user;
+* it allows for too much granularity that may not necessarily be important for a potential end user of our dashboard, instead we implemented other less granular filters that we thought might be more relevant to a regular user like filtering by `month` since we are only including data from 2021;
 
 * Too many filters will lead to clumsiness of the dashboard which may dissuade a potential user; 
 
@@ -42,7 +42,7 @@ The limitations of our dashboard include:
 
 If we had more time in the future, we have a couple of potential additions in mind:
 
-* Add more granularities by implementing time and date filters. We would have to also redesign the dashboard so it doesn't look clumsy because of the new additions.
+* Add more granularities by implementing time and date filters when data for additional years are included. We would have to also redesign the dashboard so it doesn't look clumsy because of the new additions.
 
 * Implement complete reproducibility. This is most especially important for the underlying dataset so that the dashboard gets updated as soon as the Vancouver Police Department releases new crimes data.
 
