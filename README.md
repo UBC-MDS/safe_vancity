@@ -59,9 +59,14 @@ Names and GitHub @usernames of developers listed below:
 - Arlin Cherian @arlincherian
 - Victor Francis @Vikiano
 - Wanying Ye @GloriaWYY
+
+
 ## License
 
 `safe_vancity` was created by Arlin Cherian, Victor Francis and Wanying Ye. It is licensed under the terms of the [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+## References
+Anderson, M., and T. Hodgkinson. 2022. “Andresen MA, Hodgkinson t. In a World Called Catastrophe: The Impact of COVID-19 on Neighbourhood Level Crime in Vancouver, Canada [Published Online Ahead of Print, 2022 Jan 9]. J Exp Criminol. 2022;1-25. Doi:10.1007/S11292-021-09495-6.” Journal of Experimental Criminology, 1–25.
 
 
 
