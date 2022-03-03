@@ -9,7 +9,7 @@ alt.data_transformers.disable_max_rows()
 
 # ---------------------------------------------------------------------------------------------------#
 
-crime = pd.read_csv("data/processed/crime_clean.csv")
+crime = pd.read_csv("../data/processed/crime_clean.csv")
 
 
 # ---------------------------------------------------------------------------------------------------#
@@ -71,6 +71,7 @@ def plot(crime_type, neighbourhood, month_name):
             title_y=0.97,
             title_yanchor="top",
             title_font_family="Sans-Serif",
+            plot_bgcolor='#010915',
             showlegend=False,
         )
     else:
@@ -98,6 +99,7 @@ def plot(crime_type, neighbourhood, month_name):
             title_y=0.97,
             title_yanchor="top",
             title_font_family="Sans-Serif",
+            plot_bgcolor='#010915',
             showlegend=False,
         )
     return fig.to_html()
@@ -186,7 +188,7 @@ def plot_histogram(weekday):
         .configure_title(fontSize=18, color="#FFFFFF")
         # .configure_header(titleColor="#FFFFFF", titleFontSize=14)
         .configure_view(strokeWidth=0)
-        .properties(width=250, height=300)
+        .properties(width=250, height=310)
     )
 
     return chart.to_html()
@@ -306,7 +308,6 @@ app.layout = html.Div(
                 ),
                 html.Div(
                     [
-                        # need to add a chart/table by Victor
                         html.Iframe(
                             id="hist",
                             style={
@@ -369,30 +370,13 @@ app.layout = html.Div(
                             className="fix_label",
                             style={"color": "white"},
                         ),
-                        html.Label(
-                            [
-                                "Select the weekday",
-                                dcc.Dropdown(
-                                    id="weekday",
-                                    value="Saturday",
-                                    options=[
-                                        {"label": col, "value": col} for col in week_l
-                                    ],
-                                    searchable=True,
-                                    # placeholder='Please select...',
-                                    clearable=False,
-                                    className="dcc_compon",
-                                ),
-                            ],
-                            className="fix_label",
-                            style={"color": "white"},
-                        ),
+                        
                         html.Label(
                             [
                                 "Select the month",
                                 dcc.Dropdown(
                                     id="month_name",
-                                    value="All",  # REQUIRED to show the plot on the first page load
+                                    value="All", 
                                     options=[
                                         {"label": col, "value": col}
                                         for col in [
@@ -410,6 +394,24 @@ app.layout = html.Div(
                                             "Apr",
                                             "Jan",
                                         ]
+                                    ],
+                                    searchable=True,
+                                    # placeholder='Please select...',
+                                    clearable=False,
+                                    className="dcc_compon",
+                                ),
+                            ],
+                            className="fix_label",
+                            style={"color": "white"},
+                        ),
+                        html.Label(
+                            [
+                                "Select the weekday",
+                                dcc.Dropdown(
+                                    id="weekday",
+                                    value="Saturday",
+                                    options=[
+                                        {"label": col, "value": col} for col in week_l
                                     ],
                                     searchable=True,
                                     # placeholder='Please select...',
@@ -454,7 +456,7 @@ app.layout = html.Div(
                             style={
                                 "color": "orange",
                                 "textAlign": "center",
-                                "margin-top": "30px",
+                                "margin-top": "80px",
                             },
                         ),
                         html.Label(
