@@ -156,40 +156,67 @@ def plot_altair(crime_category, neighbourhood):
                 titleFontSize=16, titleColor="#FFFFFF", labelColor="#FFFFFF"
             )
             .configure_title(fontSize=18, color="#FFFFFF")
-            # .configure_header(titleColor="#FFFFFF", titleFontSize=14)
             .configure_view(strokeWidth=0)
             .properties(width=625, height=475)
         )
     return chart.to_html()
 
 
-def plot_histogram(weekday):
-    chart = (
-        alt.Chart(
-            crime.loc[crime["day_of_week"] == weekday],
-            title=alt.TitleParams(text=f"Total Reported Cases on {weekday}s"),
+def plot_histogram(weekday, neighbourhood):
+    if weekday == "All":
+        chart = (
+            alt.Chart(
+              crime.loc[crime["NEIGHBOURHOOD"] == neighbourhood],  
+                title=alt.TitleParams(text=f"Total Reported Crimes in {neighbourhood}")
+              )
+           .mark_bar()
+           .encode(
+                x=alt.X(
+                    "crime_category",
+                    sort="-y",
+                    title="Crime Category",
+                    axis=alt.Axis(labelAngle=-45),
+                ),
+                y=alt.Y(
+                    "count()", title="Number of crime cases", axis=alt.Axis(grid=False)
+                ),
+                tooltip="count()",
+
+            )
+            .interactive()
+            .configure(background="#010915")
+            .configure_axis(titleFontSize=16, titleColor="#FFFFFF", labelColor="#FFFFFF")
+            .configure_title(fontSize=15, color="#FFFFFF")
+            .configure_view(strokeWidth=0)
+            .properties(width=250, height=310)
         )
-        .mark_bar()
-        .encode(
-            x=alt.X(
-                "crime_category",
-                sort="-y",
-                title="Crime Category",
-                axis=alt.Axis(labelAngle=-45),
-            ),
-            y=alt.Y(
-                "count()", title="Number of crime cases", axis=alt.Axis(grid=False)
-            ),
-            tooltip="count()",
+    else:
+            chart = (
+            alt.Chart(
+              crime.loc[(crime["NEIGHBOURHOOD"] == neighbourhood) & (crime["day_of_week"] == weekday)],
+              title=alt.TitleParams(text=f"Total Reported Crimes on {weekday}s in {neighbourhood}"),
+              )
+           .mark_bar()
+           .encode(
+                x=alt.X(
+                    "crime_category",
+                    sort="-y",
+                    title="Crime Category",
+                    axis=alt.Axis(labelAngle=-45),
+                ),
+                y=alt.Y(
+                    "count()", title="Number of crime cases", axis=alt.Axis(grid=False)
+                ),
+                tooltip="count()",
+            )
+            .interactive()
+            .configure(background="#010915")
+            .configure_axis(titleFontSize=16, titleColor="#FFFFFF", labelColor="#FFFFFF")
+            .configure_title(fontSize=15, color="#FFFFFF")
+            .configure_view(strokeWidth=0)
+            .properties(width=250, height=310)
         )
-        .interactive()
-        .configure(background="#010915")
-        .configure_axis(titleFontSize=16, titleColor="#FFFFFF", labelColor="#FFFFFF")
-        .configure_title(fontSize=18, color="#FFFFFF")
-        # .configure_header(titleColor="#FFFFFF", titleFontSize=14)
-        .configure_view(strokeWidth=0)
-        .properties(width=250, height=310)
-    )
+            
 
     return chart.to_html()
 
@@ -409,9 +436,18 @@ app.layout = html.Div(
                                 "Select the weekday",
                                 dcc.Dropdown(
                                     id="weekday",
-                                    value="Saturday",
+                                    value="All", 
                                     options=[
-                                        {"label": col, "value": col} for col in week_l
+                                        {"label": col, "value": col}
+                                        for col in [
+                                            "Sunday",
+                                            "Monday",
+                                            "Tuesday",
+                                            "Wednesday",
+                                            "Thursday",
+                                            "Friday",
+                                            "Saturday",
+                                        ]
                                     ],
                                     searchable=True,
                                     # placeholder='Please select...',
@@ -422,34 +458,7 @@ app.layout = html.Div(
                             className="fix_label",
                             style={"color": "white"},
                         ),
-                        # html.Label(
-                        #     ["---------------------"],
-                        #     className="fix_label",
-                        #     style={"color": "white", "textAlign": "center"},
-                        # ),
-                        # html.Label(
-                        #     [
-                        #         "Select crime category for total cases",
-                        #         dcc.Dropdown(
-                        #             id="crime_category-widget",
-                        #             value="All",  # REQUIRED to show the plot on the first page load
-                        #             options=[
-                        #                 {"label": col, "value": col}
-                        #                 for col in [
-                        #                     "All",
-                        #                     "Violent crimes",
-                        #                     "Property crimes",
-                        #                     "Vehicle collision",
-                        #                 ]
-                        #             ],
-                        #             searchable=True,
-                        #             # placeholder='Please select...',
-                        #             clearable=False,
-                        #         ),
-                        #     ],
-                        #     className="fix_label",
-                        #     style={"color": "white"},
-                        # ),
+
                         html.Label(
                             ["Data Source: "],
                             className="fix_label",
@@ -553,9 +562,10 @@ def update_altair(crime_category, neighbourhood):
 @app.callback(
     Output("hist", "srcDoc"),
     Input("weekday", "value"),
+    Input("neighbourhood", "value")
 )
-def update_histogram(weekday):
-    return plot_histogram(weekday)
+def update_histogram(weekday, neighbourhood):
+    return plot_histogram(weekday, neighbourhood)
 
 
 if __name__ == "__main__":
