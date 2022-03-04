@@ -19,13 +19,13 @@ The Safe Vancity app is an interactive platform that provides an overview of the
 
 ## App Description and Implementation
 
-The Safe Vancity app opens to a landing page with three plots. In the bottom left-hand side we have added all the filters in dropdown lists which includes crime types, neighbourhoods, month, and weekday. By selecting a neighbourhood, all the plots in the app will display metrics related to that neighbourhood.  
+The Safe Vancity app opens to a landing page with three plots. In the bottom left-hand side we have added all the filters in dropdown lists which includes crime types, neighbourhoods, month, and weekday. By selecting a `neighbourhood`, all the plots in the app will display metrics related to that `neighbourhood`.  
 
-- The map-chart allows the user to view crime density by neighbourhood, crime type and month. The users can zoom in or out of the area to see the specific streets or area where the crime was reported.  
+- The map-chart allows the user to view crime density by `neighbourhood`, `crime type` and `month`. The users can zoom in or out of the area to see the specific streets or area where the crime was reported.  
 - The bottom bar plot shows total reported cases in each neighbourhood by crime category (i.e., `Violent`, `Property` or `All` crimes). Users can hover over the plot and see the actual "counts" of cases reported for each selection. There are tabs implemented to select the choice of crime category.  
-- The top-right bar plot allows the user to see the number of cases reported in a neighbourhood by the day of the week. Users can hover over the plot and see the actual "counts" of cases reported for each selection.  
+- The top-right bar plot allows the user to see the number of crimes reported in a neighbourhood by the `day of the week`. Users can hover over the plot and see the actual "counts" of cases reported for each crime category. 
 
-For example, selecting "West End" on neighbourhood list will show crime density in the map plot on the top, total reported cases in West End by crime type in the bottom bar plot, and number of crimes by weekday in the top-right bar plot. 
+For example, selecting "West End" on neighbourhood, the dashboard will display crime density in the map plot on the top left of the screen, total reported cases in West End by crime type in the bottom bar plot, and number of crimes by weekday in the top-right bar plot. 
 
 ### App Design 
 [Add a screenshot of the dashboard]
