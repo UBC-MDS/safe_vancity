@@ -14,11 +14,11 @@ We have made most of the implementations that we proposed in our Milestone 1 pro
 
 We decided not to include the `date range` and `time range` filters in our dashboard because:
 
-* it allows for too much granularity that may not necessarily be important for a potential end user of our dashboard, instead we implemented other less granular filters that we thought might be more relevant to a regular user like filtering by `month` since we are only including data from 2021.  
+* it allows for too much granularity that may not necessarily be important for a potential end-user of our dashboard, instead we implemented other less granular filters that we thought might be more relevant to a regular user like filtering by `month` since we are only including data from 2021.  
 
 * Too many filters will lead to clumsiness of the dashboard which may dissuade a potential user.  
 
-* We also decided not to include the Top 3 crimes table that was mentioned in the proposal becuase this information was evident from the bar chart that reported total cases as we have displated this in descending order. Instead, we replaced this section with a bar plot that looks at total reported cases by crime category and weekday for each neighbourhood.  
+* We also decided not to include the Top 3 crimes table that was mentioned in the proposal because this information was evident from the bar chart that reported total cases as we have displayed this in descending order. Instead, we replaced this section with a bar plot that looks at total reported cases by crime category and weekday for each neighbourhood.  
 
 ### 3. What we think our dashboard does well
 
@@ -36,7 +36,7 @@ Our current dashboard has included all the basic functionalities that we planned
 
 The limitations of our dashboard include:
 
-* Small dataset. The dataset used was for January to December 2021 as released by Vancouver Police Department. It could have been better if we also used crime dataset for preceeding years.
+* Small dataset. The dataset used was for January to December 2021 as released by Vancouver Police Department. It could have been better if we also used crime datasets for preceding years.
   
 * We did not implement complete reproducibility. That is, for example, this dashboard will not get updated if Vancouver Police Department releases more recent crime data on their website.
 
@@ -48,4 +48,4 @@ If we had more time in the future, we have a couple of potential additions in mi
 
 * Implement complete reproducibility. This is most especially important for the underlying dataset so that the dashboard gets updated as soon as the Vancouver Police Department releases new crimes data.
 
-* Also, we would use a larger dataset, probably as much as 10 years of crimes data instead of one year's data that we currently have.
+* Also, we would use a larger dataset, probably as much as 10 years of crime data instead of one year's data that we currently have.
