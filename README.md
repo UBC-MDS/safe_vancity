@@ -28,7 +28,7 @@ The Safe Vancity app opens to a landing page with three plots. In the bottom lef
 For example, selecting "West End" on neighbourhood, the dashboard will display crime density in the map plot on the top left of the screen, total reported cases in West End by crime type in the bottom bar plot, and number of crimes by weekday in the top-right bar plot. 
 
 ### App Design 
-[Add a screenshot of the dashboard]
+![app](src/images/dashboard.png)
 
 ### Implementation and user guide
 
