@@ -34,8 +34,11 @@ For example, selecting "West End" on neighbourhood, the dashboard will display c
 
 [Add GIFS]
 1. Usage of crime density map
-2. Usage of total reported cases by crime category plot
-3. Usage of total reported cases by day of the week plot 
+
+![App sketch](src/images/map.gif)
+
+3. Usage of total reported cases by crime category plot
+4. Usage of total reported cases by day of the week plot 
 
 
 ## Support
