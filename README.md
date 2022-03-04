@@ -3,7 +3,7 @@
 Welcome! 👋 欢迎 🎊 Bienvenue! 🎉 
 
 Thank you for visiting the Safe Vancity app project repository. This is a Vancouver crime incidence app and we are your friendly, neighbourhood data scientists wanting to help you make the safest choice of location for your next forever or rental homes with the creation of this app.
-The most recent version of the dashboard is available at the following link: [INSERT LINK]
+The most recent version of the dashboard is available at the following link: https://safevancity.herokuapp.com/
 
 This app was developed as part of the course requirement for DSCI 532 - Data Visualization II course in the Master of Data Science program at the University of British Columbia, Vancouver, Canada.
 
@@ -32,13 +32,17 @@ For example, selecting "West End" on neighbourhood, the dashboard will display c
 
 ### Implementation and user guide
 
-[Add GIFS]
 1. Usage of crime density map
 
 ![App sketch](src/images/map.gif)
 
-3. Usage of total reported cases by crime category plot
-4. Usage of total reported cases by day of the week plot 
+2. Usage of total reported cases by crime category plot
+
+![App sketch](src/images/bar-1.gif)
+
+3. Usage of total reported cases by day of the week plot 
+
+![App sketch](src/images/bar2.gif) 
 
 
 ## Support
