@@ -8,7 +8,7 @@ We have made most of the implementations that we proposed in our Milestone 1 pro
 
 2. An interactive bar chart of `Total Reported Cases by Neighbourhood and Crime Type`;
 
-3. An interactive bar chart of `Total Reported Cases per Crime Category by Weekday`;
+3. An interactive bar chart of `Total Reported Cases per Crime Category by Weekday and neighbourhood`;
 
 ### 2. What we decided not to implement
 
@@ -18,7 +18,7 @@ We decided not to include the `date range` and `time range` filters in our dashb
 
 * Too many filters will lead to clumsiness of the dashboard which may dissuade a potential user.  
 
-* We also decided not to include the Top 3 crimes table that was mentioned in the proposal becuase this information was evident from the bar chart that reported total cases as we have displated this in descending order. Instead, we replaced this section with a bar plot that looks at total reported cases by crime category and weekday.  
+* We also decided not to include the Top 3 crimes table that was mentioned in the proposal becuase this information was evident from the bar chart that reported total cases as we have displated this in descending order. Instead, we replaced this section with a bar plot that looks at total reported cases by crime category and weekday for each neighbourhood.  
 
 ### 3. What we think our dashboard does well
 
