@@ -3,9 +3,8 @@
 Welcome! 👋 欢迎 🎊 Bienvenue! 🎉 
 
 Thank you for visiting the Safe Vancity app project repository. This is a Vancouver crime incidence app and we are your friendly, neighbourhood data scientists wanting to help you make the safest choice of location for your next forever or rental homes with the creation of this app.  
-The most recent version of the dashboard is available at the following link: [Safe Vancity](https://safevancity.herokuapp.com/)
 
-This app was developed as part of the course requirement for DSCI 532 - Data Visualization II course in the Master of Data Science program at the University of British Columbia, Vancouver, Canada.
+The most recent version of the dashboard is available at the following link: [Safe Vancity](https://safevancity.herokuapp.com/)
 
 In this document we outline some information about the project. See sections below:
 
@@ -25,7 +24,7 @@ The Safe Vancity app opens to a landing page with three plots. In the bottom lef
 - The bottom bar plot shows total reported cases in each neighbourhood by crime category (i.e., `Violent`, `Property` or `All` crimes). Users can hover over the plot and see the actual "counts" of cases reported for each selection. There are tabs implemented to select the choice of crime category.  
 - The top-right bar plot allows the user to see the number of crimes reported in a neighbourhood by the `day of the week`. Users can hover over the plot and see the actual "counts" of cases reported for each crime category. 
 
-For example, selecting "West End" on neighbourhood, the dashboard will display crime density in the map plot on the top left of the screen, total reported cases in West End by crime type in the bottom bar plot, and number of crimes by weekday in the top-right bar plot. 
+For example, selecting "Mount Pleasant" as neighbourhood, the dashboard will display the crime density in thsi neighbourhood in the map plot on the top left of the screen, total reported cases in Mount Pleasant by crime type and crime category in the bottom bar plot, and number of crimes by weekday in Mount Pleasant in the top-right bar plot. 
 
 ### App Design 
 ![app](src/images/dashboard.png)
@@ -67,6 +66,7 @@ Names and GitHub @usernames of developers listed below:
 - Victor Francis @Vikiano
 - Wanying Ye @GloriaWYY
 
+This app was developed as part of the course requirement for DSCI 532 - Data Visualization II course in the Master of Data Science program at the University of British Columbia, Vancouver, Canada.
 
 ## License
 
