@@ -3,7 +3,7 @@ version: '3'
 services:
   # main application
   myapp:
-    container_name: oneapp
+    container_name: safevancity
     build:
       .
     ports:
