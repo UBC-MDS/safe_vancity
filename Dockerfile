@@ -1,6 +1,6 @@
 # This Dockerfile is from https://github.com/thedirtyfew/dash-docker-mwe
 
-FROM python:3.8-slim-buster
+FROM python:3.10-slim-buster
 
 # Create a working directory.
 RUN mkdir wd
