@@ -68,10 +68,12 @@ def plot(crime_type, neighbourhood, month_name):
             title_font_size=20,
             title_xanchor="center",
             title_x=0.5,
-            title_y=0.97,
+            title_y=0.98,
             title_yanchor="top",
             title_font_family="Sans-Serif",
+             title_font_color="white",
             plot_bgcolor='#010915',
+            paper_bgcolor='#010915',
             showlegend=False,
         )
     else:
@@ -99,7 +101,9 @@ def plot(crime_type, neighbourhood, month_name):
             title_y=0.97,
             title_yanchor="top",
             title_font_family="Sans-Serif",
+            title_font_color="white",
             plot_bgcolor='#010915',
+            paper_bgcolor='#010915',
             showlegend=False,
         )
     return fig.to_html()

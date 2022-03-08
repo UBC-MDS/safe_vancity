@@ -44,6 +44,13 @@ For example, selecting "Mount Pleasant" as neighbourhood, the dashboard will dis
 ![App sketch](src/images/bar2.gif) 
 
 
+## Run the app locally 
+
+```bash
+cd safe_vancity
+docker-compose up
+```
+Finally, open the app in the followin URL http://0.0.0.0:8000 
 ## Support
 
 If you run into trouble, please check the [issues](https://github.com/UBC-MDS/safe_vancity/issues) to see if your problem has already been reported or to open new issues. We are here to help!
@@ -58,7 +65,7 @@ Check out the [contributing guidelines](https://github.com/UBC-MDS/safe_vancity/
 
 In the interest of fostering an open and welcoming environment, we as contributors and maintainers pledge to making participation in our project and our community a harassment-free experience for everyone, regardless of age, body size, disability, ethnicity, gender identity and expression, level of experience, nationality, personal appearance, race, religion, or sexual identity and orientation. Detailed descriptions of these points can be found in the [Code of Conduct](https://github.com/UBC-MDS/safe_vancity/blob/main/CODE_OF_CONDUCT.md). 
 
-# About us
+## About us
 
 Names and GitHub @usernames of developers listed below:
 
