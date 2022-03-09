@@ -71,9 +71,9 @@ def plot(crime_type, neighbourhood, month_name):
             title_y=0.98,
             title_yanchor="top",
             title_font_family="Sans-Serif",
-             title_font_color="white",
-            plot_bgcolor='#010915',
-            paper_bgcolor='#010915',
+            title_font_color="white",
+            plot_bgcolor="#010915",
+            paper_bgcolor="#010915",
             showlegend=False,
         )
     else:
@@ -102,8 +102,8 @@ def plot(crime_type, neighbourhood, month_name):
             title_yanchor="top",
             title_font_family="Sans-Serif",
             title_font_color="white",
-            plot_bgcolor='#010915',
-            paper_bgcolor='#010915',
+            plot_bgcolor="#010915",
+            paper_bgcolor="#010915",
             showlegend=False,
         )
     return fig.to_html()
@@ -113,6 +113,21 @@ def plot(crime_type, neighbourhood, month_name):
 
 
 def plot_altair(crime_category, neighbourhood):
+    """
+    Function that makes the bar chart on crime incidences by crime categories
+    and neighborhoods.
+
+    Parameters:
+    ----------
+    crime_category: {"All", "Violent crimes", "Property crimes", "Vehicle collision"}
+        category of crimes reported in Vancouver
+    neighbourhood: str
+        different neighbourhoods in Vancouver
+
+    Returns:
+    ----------
+    altair chart
+    """
     if crime_category == "All":
         chart = (
             alt.Chart(
@@ -167,14 +182,29 @@ def plot_altair(crime_category, neighbourhood):
 
 
 def plot_histogram(weekday, neighbourhood):
+    """
+    Function that makes the bar chart on crime incidences for each crime
+    category by days of a week and neighborhoods.
+
+    Parameters:
+    ----------
+    weekday: str
+        including "All" and seven days of a week - "Monday", "Tuesday", etc.
+    neighbourhood: str
+        different neighbourhoods in Vancouver
+
+    Returns:
+    ----------
+    altair chart
+    """
     if weekday == "All":
         chart = (
             alt.Chart(
-              crime.loc[crime["NEIGHBOURHOOD"] == neighbourhood],  
-                title=alt.TitleParams(text=f"Total Reported Crimes in {neighbourhood}")
-              )
-           .mark_bar()
-           .encode(
+                crime.loc[crime["NEIGHBOURHOOD"] == neighbourhood],
+                title=alt.TitleParams(text=f"Total Reported Crimes in {neighbourhood}"),
+            )
+            .mark_bar()
+            .encode(
                 x=alt.X(
                     "crime_category",
                     sort="-y",
@@ -185,23 +215,29 @@ def plot_histogram(weekday, neighbourhood):
                     "count()", title="Number of crime cases", axis=alt.Axis(grid=False)
                 ),
                 tooltip="count()",
-
             )
             .interactive()
             .configure(background="#010915")
-            .configure_axis(titleFontSize=16, titleColor="#FFFFFF", labelColor="#FFFFFF")
+            .configure_axis(
+                titleFontSize=16, titleColor="#FFFFFF", labelColor="#FFFFFF"
+            )
             .configure_title(fontSize=15, color="#FFFFFF")
             .configure_view(strokeWidth=0)
             .properties(width=250, height=310)
         )
     else:
-            chart = (
+        chart = (
             alt.Chart(
-              crime.loc[(crime["NEIGHBOURHOOD"] == neighbourhood) & (crime["day_of_week"] == weekday)],
-              title=alt.TitleParams(text=f"Total Reported Crimes on {weekday}s in {neighbourhood}"),
-              )
-           .mark_bar()
-           .encode(
+                crime.loc[
+                    (crime["NEIGHBOURHOOD"] == neighbourhood)
+                    & (crime["day_of_week"] == weekday)
+                ],
+                title=alt.TitleParams(
+                    text=f"Total Reported Crimes on {weekday}s in {neighbourhood}"
+                ),
+            )
+            .mark_bar()
+            .encode(
                 x=alt.X(
                     "crime_category",
                     sort="-y",
@@ -215,12 +251,13 @@ def plot_histogram(weekday, neighbourhood):
             )
             .interactive()
             .configure(background="#010915")
-            .configure_axis(titleFontSize=16, titleColor="#FFFFFF", labelColor="#FFFFFF")
+            .configure_axis(
+                titleFontSize=16, titleColor="#FFFFFF", labelColor="#FFFFFF"
+            )
             .configure_title(fontSize=15, color="#FFFFFF")
             .configure_view(strokeWidth=0)
             .properties(width=250, height=310)
         )
-            
 
     return chart.to_html()
 
@@ -229,6 +266,8 @@ def plot_histogram(weekday, neighbourhood):
 
 
 app = Dash(__name__, meta_tags=[{"name": "viewport", "content": "width=device-width"}])
+
+app.title = "Safe Vancity"
 
 server = app.server
 # ---------------------------------------------------------------------------------------------------#
@@ -401,13 +440,12 @@ app.layout = html.Div(
                             className="fix_label",
                             style={"color": "white"},
                         ),
-                        
                         html.Label(
                             [
                                 "Select the month",
                                 dcc.Dropdown(
                                     id="month_name",
-                                    value="All", 
+                                    value="All",
                                     options=[
                                         {"label": col, "value": col}
                                         for col in [
@@ -440,7 +478,7 @@ app.layout = html.Div(
                                 "Select the weekday",
                                 dcc.Dropdown(
                                     id="weekday",
-                                    value="All", 
+                                    value="All",
                                     options=[
                                         {"label": col, "value": col}
                                         for col in [
@@ -462,7 +500,6 @@ app.layout = html.Div(
                             className="fix_label",
                             style={"color": "white"},
                         ),
-
                         html.Label(
                             ["Data Source: "],
                             className="fix_label",
@@ -564,9 +601,7 @@ def update_altair(crime_category, neighbourhood):
 
 
 @app.callback(
-    Output("hist", "srcDoc"),
-    Input("weekday", "value"),
-    Input("neighbourhood", "value")
+    Output("hist", "srcDoc"), Input("weekday", "value"), Input("neighbourhood", "value")
 )
 def update_histogram(weekday, neighbourhood):
     return plot_histogram(weekday, neighbourhood)
