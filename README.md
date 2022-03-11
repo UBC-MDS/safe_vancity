@@ -50,7 +50,7 @@ For example, selecting "Mount Pleasant" as neighbourhood, the dashboard will dis
 cd safe_vancity
 docker-compose up
 ```
-Finally, open the app in the followin URL http://0.0.0.0:8000 
+Finally, open the app in the following URL http://0.0.0.0:8000 
 ## Support
 
 If you run into trouble, please check the [issues](https://github.com/UBC-MDS/safe_vancity/issues) to see if your problem has already been reported or to open new issues. We are here to help!
