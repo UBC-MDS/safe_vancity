@@ -46,6 +46,8 @@ For example, selecting "Mount Pleasant" as neighbourhood, the dashboard will dis
 
 ## Run the app locally 
 
+First clone the repo and then run this code block:
+
 ```bash
 cd safe_vancity
 docker-compose up
