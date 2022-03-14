@@ -145,7 +145,7 @@ def plot_altair(crime_category, neighbourhood):
             .interactive()
             .configure(background="#010915")
             .configure_axis(
-                titleFontSize=16, titleColor="#FFFFFF", labelColor="#FFFFFF"
+                titleFontSize=18, titleColor="#FFFFFF", labelColor="#FFFFFF"
             )
             .configure_title(fontSize=18, color="#FFFFFF")
             # .configure_header(titleColor="#FFFFFF", titleFontSize=14)
@@ -172,7 +172,7 @@ def plot_altair(crime_category, neighbourhood):
             .interactive()
             .configure(background="#010915")
             .configure_axis(
-                titleFontSize=16, titleColor="#FFFFFF", labelColor="#FFFFFF"
+                titleFontSize=18, titleColor="#FFFFFF", labelColor="#FFFFFF"
             )
             .configure_title(fontSize=18, color="#FFFFFF")
             .configure_view(strokeWidth=0)
