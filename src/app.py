@@ -322,7 +322,7 @@ app.layout = html.Div(
                                         "textalign": "right",
                                     },
                                 ),
-                                html.H3(
+                                html.H4(
                                     "Incidence for 2021",
                                     style={
                                         "margin-top": "0px",
@@ -358,12 +358,40 @@ app.layout = html.Div(
         ),
         html.Div([
     html.Div([
-        html.H6(children='Total crimes in 2021',
+        html.H6(children='Total crimes',
                             style={'textAlign': 'center',
                            'color': 'white'}),
         html.P(f" 32,007",
                             style={'textAlign': 'center',
-                           'color': 'orange',
+                           'color': '#4C78A8',
+                           'fontSize': 40})
+        ], className='card_container three columns'),
+            
+     html.Div([
+        html.H6(children='Total property crimes',
+                            style={'textAlign': 'center',
+                           'color': 'white'}),
+        html.P(f" 21,853",
+                            style={'textAlign': 'center',
+                           'color': '#4C78A8',
+                           'fontSize': 40})
+        ], className='card_container three columns'),
+    html.Div([
+        html.H6(children='Total violent crimes',
+                            style={'textAlign': 'center',
+                           'color': 'white'}),
+        html.P(f" 9,114",
+                            style={'textAlign': 'center',
+                           'color': '#4C78A8',
+                           'fontSize': 40})
+        ], className='card_container three columns'),
+    html.Div([
+        html.H6(children=' Total vehical collision',
+                            style={'textAlign': 'center',
+                           'color': 'white'}),
+        html.P(f" 1,040",
+                            style={'textAlign': 'center',
+                           'color': '#4C78A8',
                            'fontSize': 40})
         ], className='card_container three columns'),
            
