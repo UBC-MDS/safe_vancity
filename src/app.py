@@ -356,6 +356,19 @@ app.layout = html.Div(
             className="row flex-display",
             style={"margin-bottom": "25px"},
         ),
+        html.Div([
+    html.Div([
+        html.H6(children='Total crimes in 2021',
+                            style={'textAlign': 'center',
+                           'color': 'white'}),
+        html.P(f" 32,007",
+                            style={'textAlign': 'center',
+                           'color': 'orange',
+                           'fontSize': 40})
+        ], className='card_container three columns'),
+           
+    ], className = 'row flex-display'),
+        
         html.Div(
             [
                 html.Div(
