@@ -36,14 +36,25 @@ Extracted data can be found in the data folder.
 The 2021 crimes dataset consists of 32,013 observations. Each
 observation has 9 associated relevant variables that determine the type
 of crime in various neigbhourhoods in Vancouver. These variables are
-`YEAR`, `MONTH`, `DAY`, `HOUR`, `MINUTE`, `HUNDRED_BLOCK`,
-`NEIGHBOURHOOD`, `X` coordinate, and `Y` coordinate. Depending on what
-values the aforementioned variables take, `TYPE` of crime can be one of
-*Break and Enter Commercial*, *Break and Enter Residential/Other*,
-*Homicide*, *Mischief*, *Offence Against a Person*, *Other Theft*,
-*Theft from Vehicle*, *Theft of Bicycle*, *Theft of Vehicle*, *Vehicle
-Collision or Pedestrian Struck (with Fatality)*, *Vehicle Collision or
-Pedestrian Struck (with Injury)*.
+`YEAR`, `MONTH`, `DAY`, `HOUR`, `MINUTE`, `HUNDRED_BLOCK` (generalized
+location of the crime acitvity), `NEIGHBOURHOOD`, `X` coordinate, and
+`Y` coordinate. For the purpose of this dashboard and scenario analysis,
+we will be building plots based on `TYPE`, `NEIGHBOURHOOD`, `MONTH`,
+`DAY`, `X` and `Y` coordinates. Some additional variables were
+engineered from the original variables.  
+- `TYPE`: crime type can be one of *Break and Enter Commercial*, *Break
+and Enter Residential/Other*, *Homicide*, *Mischief*, *Offence Against a
+Person*, *Other Theft*, *Theft from Vehicle*, *Theft of Bicycle*, *Theft
+of Vehicle*, *Vehicle Collision or Pedestrian Struck (with Fatality)*,
+*Vehicle Collision or Pedestrian Struck (with Injury)*.  
+- `NEIGHBOURHOOD`: include all neighbourhoods in Vancouver  
+- `month_name`: Abbreviations of month name labels from `MONTH`  
+- `day_of_week`: Day of the week was derived from the date, by
+concatenating `YEAR`, `MONTH` and `DAY` variables  
+- `LONG` and `LAT`: angular longitude and latitude values were derived
+from the UTM Zone 10 for mapping  
+- `crime_category`: The different crime types were grouped by property,
+violent or vehicle crimes for analysis and visualization.
 
 # Research Questions and Usage Scenarios
 
