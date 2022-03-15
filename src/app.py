@@ -649,7 +649,7 @@ app.layout = html.Div(
                                 .tz_convert("US/Pacific")
                                 .strftime("%m/%d/%Y, %H:%M:%S")
                             ),
-                            style={"color": "orange", "margin-top": "25px"},
+                            style={"color": "orange", "margin-top": "25px", "textAlign": "center",},
                         ),
                     ],
                     className="create_container three columns",
@@ -730,7 +730,7 @@ def update_altair(crime_category, neighbourhood, crime_type):
 
 
 @app.callback(
-    Output("hist", "srcDoc"), Input("weekday", "value"), Input("neighbourhood", "value")
+    Output("hist", "srcDoc"), Input("weekday", "value"), Input("neighbourhood", "value"),
 )
 def update_histogram(weekday, neighbourhood):
     return plot_histogram(weekday, neighbourhood)
