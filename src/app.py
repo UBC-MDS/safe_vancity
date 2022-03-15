@@ -17,12 +17,14 @@ crime = pd.read_csv("data/processed/crime_clean.csv")
 # Dropdown lists for Neighbourhood and crime types
 
 neighbourhood_l = (
-    crime.loc[crime["NEIGHBOURHOOD"].notna(), "NEIGHBOURHOOD"].unique().tolist()
+    crime.loc[crime["NEIGHBOURHOOD"].notna(
+    ), "NEIGHBOURHOOD"].unique().tolist()
 )
 
 comp = crime.loc[crime["TYPE"].notna(), "TYPE"].unique().tolist()
 
-week_l = crime.loc[crime["day_of_week"].notna(), "day_of_week"].unique().tolist()
+week_l = crime.loc[crime["day_of_week"].notna(),
+                   "day_of_week"].unique().tolist()
 
 # ---------------------------------------------------------------------------------------------------#
 # front-end functions
@@ -202,7 +204,8 @@ def plot_histogram(weekday, neighbourhood):
         chart = (
             alt.Chart(
                 crime.loc[crime["NEIGHBOURHOOD"] == neighbourhood],
-                title=alt.TitleParams(text=f"Total Reported Crimes in {neighbourhood}"),
+                title=alt.TitleParams(
+                    text=f"Total Reported Crimes in {neighbourhood}"),
             )
             .mark_bar()
             .encode(
@@ -266,7 +269,8 @@ def plot_histogram(weekday, neighbourhood):
 # ---------------------------------------------------------------------------------------------------#
 
 
-app = Dash(__name__, meta_tags=[{"name": "viewport", "content": "width=device-width"}])
+app = Dash(__name__, meta_tags=[
+           {"name": "viewport", "content": "width=device-width"}])
 
 # collapse button for about section
 
@@ -285,7 +289,7 @@ toast = html.Div(
 app.title = "Safe Vancity"
 
 server = app.server
-# ---------------------------------------------------------------------------------------------------#
+# ---------------------------------------------------------------------------------------------------# create app layout
 
 tab_style = {
     "borderBottom": "1px solid #d6d6d6",
@@ -307,7 +311,6 @@ tab_selected_style = {
 }
 
 
-
 app.layout = html.Div(
     [
         html.Div(
@@ -318,39 +321,42 @@ app.layout = html.Div(
                     color="white",
                     className="mb-3",
                     n_clicks=0,
+                    style={"position": "fixed", "right": 90},
                 ),
-                
+
                 dbc.Toast(
                     [
-                html.A(
-                    "GitHub",
-                    href="https://github.com/UBC-MDS/safe_vancity",
-                    style={"color": "orange", "text-decoration": "underline"},
-                ),
-                html.P(
-                    "The dashboard was created by Arlin Cherian, Victor Francis, Wanying Ye. It is licensed under MIT license. Please visit GitHub for more information.",
-                    style={"color": "white"},
-                    
-                ),
-                html.A(
-                    "Dashboard description",
-                    style={"color": "orange", "text-decoration": "underline"},
-                ),
-                html.P(
-                    """This dashboard allows you to see crime incidence in 2021 in Vancouver neighbourhoods. By selecting a neighbourhood from the drop down menu, all the plots in the app will display metrics related to that neighbourhood. The map will display crime density by 'neighbourhood', 'crime type' and by 'month'. You can zoom into the neighbourhood to see specific streets where the crimes have happened. You can use the toggle options on the top right corner of the map to zoom in or out, pan the map and reset axes. The top-right bar plot shows the total reported crimes in a selected neighbourhood by 'day of the week' (default all days). This plot can be filtered using the 'neighbourhood' and 'day of the week' options. Finally, the bottom bar plot shows total reported crimes by crime category in each neighbourhood. Here crime types are grouped by crime categories (Violent, Property and Vehicle Collision). Default view shows the total cases for all crime categories. You can toggle through the tab options. From this plot you can see the top crimes in each neighbourhood in 2021. Some summary stats of overall reported crimes in Vancouver in 2021, total property, violent and vehicle collision crimes are reported at the very top.""",
-                    style={"color": "white"},
+                        html.A(
+                            "GitHub",
+                            href="https://github.com/UBC-MDS/safe_vancity",
+                            style={"color": "orange",
+                                   "text-decoration": "underline"},
+                        ),
+                        html.P(
+                            "The dashboard was created by Arlin Cherian, Victor Francis, Wanying Ye. It is licensed under MIT license. Please visit GitHub for more information.",
+                            style={"color": "white"},
+
+                        ),
+                        html.A(
+                            "Dashboard description",
+                            style={"color": "orange",
+                                   "text-decoration": "underline"},
+                        ),
+                        html.P(
+                            """This dashboard allows you to see crime incidence in 2021 in Vancouver neighbourhoods. By selecting a neighbourhood from the drop down menu, all the plots in the app will display metrics related to that neighbourhood. The map will display crime density by 'neighbourhood', 'crime type' and by 'month'. You can zoom into the neighbourhood to see specific streets where the crimes have happened. You can use the toggle options on the top right corner of the map to zoom in or out, pan the map and reset axes. The top-right bar plot shows the total reported crimes in a selected neighbourhood by 'day of the week' (default all days). This plot can be filtered using the 'neighbourhood' and 'day of the week' options. Finally, the bottom bar plot shows total reported crimes by crime category in each neighbourhood. Here crime types are grouped by crime categories (Violent, Property and Vehicle Collision). Default view shows the total cases for all crime categories. You can toggle through the tab options. From this plot you can see the top crimes in each neighbourhood in 2021. Some summary stats of overall reported crimes in Vancouver in 2021, total property, violent and vehicle collision crimes are reported at the very top.""",
+                            style={"color": "white"},
+                        ),
+                    ],
+                    id="simple-toast",
+                    header="About",
+                    icon="primary",
+                    dismissable=True,
+                    is_open=False,
                 ),
             ],
-            id="simple-toast",
-            header="About",
-            icon="primary",
-            dismissable=True,
-            is_open=False,
-        ),
-            ], 
             className="row flex-display",
         ),
-                
+
         html.Div(
             [
                 html.Div(
@@ -359,7 +365,7 @@ app.layout = html.Div(
                             src=app.get_asset_url("logo-1.jpg"),
                             id="logo_image",
                             style={
-                                "height": "80px",
+                                "height": "60px",
                                 "width": "auto",
                                 "margin-bottom": "10px",
                                 "padding-left": 0,
@@ -394,67 +400,52 @@ app.layout = html.Div(
                     className="six column",
                     id="title",
                 ),
-                html.Div(
-                    [
-                        html.H6(
-                            "Last Updated: "
-                            + str(
-                                pd.to_datetime("now", utc=True)
-                                .tz_convert("US/Pacific")
-                                .strftime("%m/%d/%Y, %H:%M:%S")
-                            ),
-                            style={"color": "orange"},
-                        )
-                    ],
-                    className="one-third column",
-                    id="title1",
-                ),
             ],
             id="header",
             className="row flex-display",
             style={"margin-bottom": "25px"},
         ),
         html.Div([
-    html.Div([
-        html.H6(children='Total crimes',
-                            style={'textAlign': 'center',
-                           'color': 'white'}),
-        html.P(f" 32,007",
-                            style={'textAlign': 'center',
-                           'color': '#4C78A8',
-                           'fontSize': 40})
-        ], className='card_container three columns'),
-            
-     html.Div([
-        html.H6(children='Total property crimes',
-                            style={'textAlign': 'center',
-                           'color': 'white'}),
-        html.P(f" 21,853",
-                            style={'textAlign': 'center',
-                           'color': '#4C78A8',
-                           'fontSize': 40})
-        ], className='card_container three columns'),
-    html.Div([
-        html.H6(children='Total violent crimes',
-                            style={'textAlign': 'center',
-                           'color': 'white'}),
-        html.P(f" 9,114",
-                            style={'textAlign': 'center',
-                           'color': '#4C78A8',
-                           'fontSize': 40})
-        ], className='card_container three columns'),
-    html.Div([
-        html.H6(children=' Total vehical collision',
-                            style={'textAlign': 'center',
-                           'color': 'white'}),
-        html.P(f" 1,040",
-                            style={'textAlign': 'center',
-                           'color': '#4C78A8',
-                           'fontSize': 40})
-        ], className='card_container three columns'),
-           
-    ], className = 'row flex-display', style={"margin-bottom": "25px", "margin-top": "25px"}),
-        
+            html.Div([
+                html.H6(children='Total crimes',
+                        style={'textAlign': 'center',
+                               'color': 'white'}),
+                html.P(f" 32,007",
+                       style={'textAlign': 'center',
+                              'color': '#4C78A8',
+                              'fontSize': 40})
+            ], className='card_container three columns'),
+
+            html.Div([
+                html.H6(children='Total property crimes',
+                        style={'textAlign': 'center',
+                               'color': 'white'}),
+                html.P(f" 21,853",
+                       style={'textAlign': 'center',
+                              'color': '#4C78A8',
+                              'fontSize': 40})
+            ], className='card_container three columns'),
+            html.Div([
+                html.H6(children='Total violent crimes',
+                        style={'textAlign': 'center',
+                               'color': 'white'}),
+                html.P(f" 9,114",
+                       style={'textAlign': 'center',
+                              'color': '#4C78A8',
+                              'fontSize': 40})
+            ], className='card_container three columns'),
+            html.Div([
+                html.H6(children=' Total vehical collision',
+                        style={'textAlign': 'center',
+                               'color': 'white'}),
+                html.P(f" 1,040",
+                       style={'textAlign': 'center',
+                              'color': '#4C78A8',
+                              'fontSize': 40})
+            ], className='card_container three columns'),
+
+        ], className='row flex-display', style={"margin-bottom": "25px", "margin-top": "25px"}),
+
         html.Div(
             [
                 html.Div(
@@ -510,7 +501,8 @@ app.layout = html.Div(
                                 dcc.Dropdown(
                                     id="crime_type",
                                     value="Break and Enter Commercial",
-                                    options=[{"label": i, "value": i} for i in comp],
+                                    options=[{"label": i, "value": i}
+                                             for i in comp],
                                     searchable=True,
                                     # placeholder='Select a crime type..',
                                     clearable=False,
@@ -622,6 +614,17 @@ app.layout = html.Div(
                                 "margin-top": "0px",
                             },
                         ),
+
+                        html.Label(
+                            "Last Updated: "
+                            + str(
+                                pd.to_datetime("now", utc=True)
+                                .tz_convert("US/Pacific")
+                                .strftime("%m/%d/%Y, %H:%M:%S")
+                            ),
+                            style={"color": "orange",
+                                   "margin-top": "25px"},
+                        ),
                     ],
                     className="create_container three columns",
                 ),
@@ -700,10 +703,12 @@ def update_altair(crime_category, neighbourhood):
 
 
 @app.callback(
-    Output("hist", "srcDoc"), Input("weekday", "value"), Input("neighbourhood", "value")
+    Output("hist", "srcDoc"), Input(
+        "weekday", "value"), Input("neighbourhood", "value")
 )
 def update_histogram(weekday, neighbourhood):
     return plot_histogram(weekday, neighbourhood)
+
 
 @app.callback(
     Output("simple-toast", "is_open"),
@@ -713,7 +718,6 @@ def open_toast(n):
     if n == 0:
         return no_update
     return True
-
 
 
 if __name__ == "__main__":
