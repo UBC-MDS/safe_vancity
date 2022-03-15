@@ -1,6 +1,7 @@
 import plotly.express as px
-from dash import Dash, dcc, html, Input, Output
+from dash import Dash, dcc, html, Input, Output, State, no_update
 from pyproj import Transformer
+import dash_bootstrap_components as dbc
 import pandas as pd
 import altair as alt
 import os
@@ -267,6 +268,20 @@ def plot_histogram(weekday, neighbourhood):
 
 app = Dash(__name__, meta_tags=[{"name": "viewport", "content": "width=device-width"}])
 
+# collapse button for about section
+
+toast = html.Div(
+    [
+        dbc.Button(
+            "About",
+            id="simple-toast-toggle",
+            color="#010915",
+            className="mb-3",
+            n_clicks=0,
+        )
+    ]
+)
+
 app.title = "Safe Vancity"
 
 server = app.server
@@ -291,8 +306,51 @@ tab_selected_style = {
     "fontSize": 20,
 }
 
+
+
 app.layout = html.Div(
     [
+        html.Div(
+            [
+                dbc.Button(
+                    "About",
+                    id="simple-toast-toggle",
+                    color="white",
+                    className="mb-3",
+                    n_clicks=0,
+                ),
+                
+                dbc.Toast(
+                    [
+                html.A(
+                    "GitHub",
+                    href="https://github.com/UBC-MDS/safe_vancity",
+                    style={"color": "orange", "text-decoration": "underline"},
+                ),
+                html.P(
+                    "The dashboard was created by Arlin Cherian, Victor Francis, Wanying Ye. It is licensed under MIT license. Please visit GitHub for more information.",
+                    style={"color": "white"},
+                    
+                ),
+                html.A(
+                    "Dashboard description",
+                    style={"color": "orange", "text-decoration": "underline"},
+                ),
+                html.P(
+                    """This dashboard allows you to see crime incidence in 2021 in Vancouver neighbourhoods. By selecting a neighbourhood from the drop down menu, all the plots in the app will display metrics related to that neighbourhood. The map will display crime density by 'neighbourhood', 'crime type' and by 'month'. You can zoom into the neighbourhood to see specific streets where the crimes have happened. You can use the toggle options on the top right corner of the map to zoom in or out, pan the map and reset axes. The top-right bar plot shows the total reported crimes in a selected neighbourhood by 'day of the week' (default all days). This plot can be filtered using the 'neighbourhood' and 'day of the week' options. Finally, the bottom bar plot shows total reported crimes by crime category in each neighbourhood. Here crime types are grouped by crime categories (Violent, Property and Vehicle Collision). Default view shows the total cases for all crime categories. You can toggle through the tab options. From this plot you can see the top crimes in each neighbourhood in 2021. Some summary stats of overall reported crimes in Vancouver in 2021, total property, violent and vehicle collision crimes are reproted at the very top.""",
+                    style={"color": "white"},
+                ),
+            ],
+            id="simple-toast",
+            header="About",
+            icon="primary",
+            dismissable=True,
+            is_open=False,
+        ),
+            ], 
+            className="row flex-display",
+        ),
+                
         html.Div(
             [
                 html.Div(
@@ -395,7 +453,7 @@ app.layout = html.Div(
                            'fontSize': 40})
         ], className='card_container three columns'),
            
-    ], className = 'row flex-display'),
+    ], className = 'row flex-display', style={"margin-bottom": "25px", "margin-top": "25px"}),
         
         html.Div(
             [
@@ -646,6 +704,16 @@ def update_altair(crime_category, neighbourhood):
 )
 def update_histogram(weekday, neighbourhood):
     return plot_histogram(weekday, neighbourhood)
+
+@app.callback(
+    Output("simple-toast", "is_open"),
+    [Input("simple-toast-toggle", "n_clicks")],
+)
+def open_toast(n):
+    if n == 0:
+        return no_update
+    return True
+
 
 
 if __name__ == "__main__":
