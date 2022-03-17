@@ -66,7 +66,7 @@ If we had more time in the future, we have a couple of potential additions in mi
 
 We are appreciative all of the feedback we received from the TA and our peers. These feedback have empowered us to improve upon initial iterations of our dashboard.
 
-Some of the very helpful feedback include the ability of the horizontal bar chart to highlight the crime type selected in the filter on the left. Another recommendation was better description of variables in our proposal document. Also, an explanatory section where a non-technical user can refer to as a go-to guide was suggested. We have happily implemented these feedback.
+Some of the very helpful feedbacks included the ability of the horizontal bar chart to highlight the crime type selected in the filter on the left. Another recommendation was better description of variables in our proposal document. Also, an explanatory section where a non-technical user can refer to as a go-to guide was suggested. We have happily implemented these feedback.
 
 ## 8. Fixed issues from Previous Milestones
 
