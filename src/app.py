@@ -273,20 +273,6 @@ def plot_histogram(weekday, neighbourhood):
 
 app = Dash(__name__, meta_tags=[{"name": "viewport", "content": "width=device-width"}])
 
-# collapse button for about section
-
-toast = html.Div(
-    [
-        dbc.Button(
-            "About",
-            id="simple-toast-toggle",
-            color="#010915",
-            className="mb-3",
-            n_clicks=0,
-        )
-    ]
-)
-
 app.title = "Safe Vancity"
 
 server = app.server
@@ -601,6 +587,7 @@ app.layout = html.Div(
                                     options=[
                                         {"label": col, "value": col}
                                         for col in [
+                                            "All",
                                             "Sunday",
                                             "Monday",
                                             "Tuesday",
@@ -649,7 +636,11 @@ app.layout = html.Div(
                                 .tz_convert("US/Pacific")
                                 .strftime("%m/%d/%Y, %H:%M:%S")
                             ),
-                            style={"color": "orange", "margin-top": "25px", "textAlign": "center",},
+                            style={
+                                "color": "orange",
+                                "margin-top": "25px",
+                                "textAlign": "center",
+                            },
                         ),
                     ],
                     className="create_container three columns",
@@ -730,7 +721,9 @@ def update_altair(crime_category, neighbourhood, crime_type):
 
 
 @app.callback(
-    Output("hist", "srcDoc"), Input("weekday", "value"), Input("neighbourhood", "value"),
+    Output("hist", "srcDoc"),
+    Input("weekday", "value"),
+    Input("neighbourhood", "value"),
 )
 def update_histogram(weekday, neighbourhood):
     return plot_histogram(weekday, neighbourhood)
