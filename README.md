@@ -27,7 +27,7 @@ The Safe Vancity app opens to a landing page with three plots. In the bottom lef
 For example, selecting "Mount Pleasant" as neighbourhood, the dashboard will display the crime density in this neighbourhood in the map plot on the top left of the screen, total reported cases in Mount Pleasant by crime type and crime category in the bottom bar plot, and the number of crimes by weekday in Mount Pleasant in the top-right bar plot. 
 
 ### App Design 
-![app](src/images/dashboard.png)
+![app](src/images/dash_final.png)
 
 ### Implementation and user guide
 
@@ -37,7 +37,7 @@ For example, selecting "Mount Pleasant" as neighbourhood, the dashboard will dis
 
 2. Usage of total reported cases by crime category plot
 
-![App sketch](src/images/bar-1.gif)
+![App sketch](src/images/plot3_final.gif)
 
 3. Usage of total reported cases by day of the week plot 
 
