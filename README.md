@@ -37,7 +37,7 @@ For example, selecting "Mount Pleasant" as neighbourhood, the dashboard will dis
 
 2. Usage of total reported cases by crime category plot
 
-![App sketch](src/images/plot3_final.gif)
+![App sketch](src/images/barplot1_2.gif)
 
 3. Usage of total reported cases by day of the week plot 
 
